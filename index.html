@@ -1,0 +1,165 @@
+<!--
+ * @Author: example@aomain.com 1824740184@qq.com
+ * @Date: 2023-08-16 02:04:00
+ * @LastEditors: example@aomain.com 1824740184@qq.com
+ * @LastEditTime: 2023-08-19 14:17:41
+ * @FilePath: \Blog顶置卡片设计（css+js）\index.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;,">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.15/swiper-bundle.min.css'>
+  <link rel="stylesheet" href="./style.css">
+  <title>迪那处理站党支部 党支部党建示范点人才</title>
+</head>
+
+<body>
+  <!-- 卡片设计 -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <style>
+    .active{
+      opacity: 1;
+    }
+    @font-face {
+      font-family: 'cer';
+      src: url(./font/仓耳舒圆体W03.ttf);
+    }
+  </style>
+  <div style="position: fixed;left: 0;top: 0;">
+    <img src="./img/lefticon.png" alt="">
+  </div>
+  <div style="position: fixed;left: 0;bottom: 0;">
+    <img src="./img/bottomimg.png" alt="">
+  </div>
+  <div style="position: fixed;right: 0;bottom: 0;">
+    <img src="./img/right.png" alt="">
+  </div>
+  <div style="position: fixed;top: 10vh;left: 0;right: 0;margin: 0 auto;">
+    <div style="font-family: 'cer',sans-serif;text-align: center;">
+      <p style="font-size: 48px;margin: 0;padding: 0;">
+        迪那处理站党支部
+      </p>
+      <p style="font-size: 32px;margin: 1vh 0 0 10vw;padding: 0;">党支部党建示范点人才</p>
+    </div>
+  </div>
+  <div class="blog-slider" style="user-select: none;">
+    <div class="blog-slider_wrp swiper-wrapper" id="blog-slider_items">
+    </div>
+    <div class="blog-slider_pagination"></div>
+    <div id="drawerContent"
+      style="display: none; width: 100%;height: 100%;background: #fff;position: absolute;top: 0;left: 0;z-index: 9999999;border-radius: 25px;">
+
+    </div>
+  </div>
+  <script defer src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+  <script defer src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.15/swiper-bundle.min.js'></script>
+
+  <script>
+    var dataimg = {
+      imgArr: ["./img/wsl.jpeg", "./img/tjh.jpeg", "./img/yg.png", "./img/zpg.jpeg", "./img/zxd.jpeg",
+        "./img/xll.png"],
+    }
+    var datatext = {
+      textname: ["王胜雷", "谭建华", "杨刚", "张朋岗", "张效东", "徐乐乐"],
+      years: ["15-16年兼任迪那采气队队长", "11-13年任迪那处理站站长", "09-13年任迪那维护部主任", "09-11年任迪那处理站副站长", "16-19年任迪那处理站书记",
+        "16-21年任迪那采气作业区经理"
+      ],
+      wsl: ["塔里木油田2017年度科技推广三等奖", "塔里木油田2019年度QHSE工作突出推动者", "全国石油安全生产与应急管理峰会优秀论文二等奖"],
+      tjh: ["塔里木油田2009年度HSE先进个人", "塔里木油田2011年一季度安全文化贡献", "油田公司2011年工艺安全“金点子”一等奖"],
+      yg: ["塔里木油田2011年度QC成果一等奖", "塔里木油田2011年度备管理先进个人", "塔里木油田2014年度优秀共产党员"],
+      zpg: ["塔里木油田2009年度HSE先进个人", "勘探与生产分公司2015年度安全环保先进工作者", "全国安全生产与应急管理峰会优秀论文二等奖"],
+      zxd: ["塔里木油田公司技能比武二等奖", "油田公司2012年度优秀统计分析三等奖", "全国安全生产与应急管理峰会优秀论文三等奖"],
+      xll: ["塔里木油田2016年二季度安全文化贡献奖", "塔里木油田2019年度节能节水技措项目二等奖", "塔里木油田2020年度基层党建典型案例三等奖"],
+      bottomtext: ["脚踏实地带领团队创佳绩", "把迪那处理站打造成少人高效的模范", "一颗匠心谱写青春芳华", "上紧基层安全生产“发条”", "创新引领，乘科技快车建高效气田",
+        "以实干促创新，用心当好“领头人”"
+      ]
+    }
+    let imglist = document.getElementById('blog-slider_items')
+    let detail = document.getElementById('drawerContent')
+    let imgArr1 = ''
+    let detaillist = ''
+    for (let i = 0; i < dataimg.imgArr.length; i++) {
+      imgArr1 += `
+                <div class="blog-slider_item swiper-slide">
+        <div class="blog-slider_img">
+          <img src="${dataimg.imgArr[i]}" alt="">
+        </div>
+        <div id="drawer">
+      <div class="blog-slider-leftbtn" id="handle" onclick="xian(${[i]})">
+        <div class="arrows-body">
+          <div class="arrow"></div>
+          <div class="arrow"></div>
+          <div class="arrow"></div>
+        </div>
+      </div>
+    </div>
+      </div>
+                `;
+      imglist.innerHTML = imgArr1;
+    };
+    for (let k = 0; k < datatext.textname.length; k++) {
+      detaillist += `
+      <div id="detail${k+1}" class="inex" style="margin: 10vh auto 0 auto;text-align: center;font-family: 'cer',sans-serif;display:none;">
+        <span style="font-size: 28px;color: brown;font-weight: 400;">${datatext.years[k]}</span>
+        <div style="font-size: 24px;margin-top: 0.5vh;">${datatext.textname[k]}</div>
+        <div style="white-space: pre-line;font-size: 24px;">
+          获得荣誉:
+          塔里木油田2016年二季度安全文化贡献奖
+          塔里木油田2019年度节能节水技措项目二等奖
+          塔里木油田2020年度基层党建典型案例三等奖</div>
+        <a href="#" class="blog-slider_button">${datatext.bottomtext[k]}</a>
+      </div>
+                `;
+                detail.innerHTML = detaillist;
+    };
+    function xian(index) {
+  // 获取所有 .inex 元素
+  let inexList = document.querySelectorAll('.inex');
+
+  // 遍历所有 .inex 元素
+  inexList.forEach((element, i) => {
+    if (i === index) {
+      // 如果索引匹配，显示该元素
+      element.style.display = 'block';
+    } else {
+      // 否则隐藏其他元素
+      element.style.display = 'none';
+    }
+  });
+
+  // 切换 drawerContent 的打开状态
+  let drawerContent = document.getElementById('drawerContent');
+  if (drawerContent.classList.contains('open')) {
+    drawerContent.classList.remove('open');
+  } else {
+    drawerContent.classList.add('open');
+  }
+}
+
+    window.onload = function() {
+  // 在这里编写代码，在页面完全加载后执行
+  var swiper = new Swiper('.blog-slider', {
+      spaceBetween: 30,
+      effect: 'fade',
+      loop: true,
+      mousewheel: {
+        invert: false,
+      },
+      direction: 'vertical',
+      pagination: {
+        el: '.blog-slider_pagination',
+        clickable: true,
+      },
+    });
+};
+  </script>
+</body>
+
+</html>
